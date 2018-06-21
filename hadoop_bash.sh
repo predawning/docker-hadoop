@@ -1,0 +1,1 @@
+docker run -it --rm --name hdfs-shell --network enhance-docker-hadoop_default -e "CORE_CONF_fs_defaultFS=hdfs://namenode:8020" -e "CLUSTER_NAME=test" -v /Users/leopoldli/ruiya/hadoop_client:/home/client -t c09dbf98c14c  /bin/bash

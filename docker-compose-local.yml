@@ -11,6 +11,8 @@ services:
       - CLUSTER_NAME=test
     env_file:
       - ./hadoop.env
+    ports:
+      - "50070:50070"
 
   resourcemanager:
     build: ./resourcemanager
@@ -63,23 +65,27 @@ services:
       - "namenode"
     links:
       - "namenode"
+    ports:
+      - "50075:50075"
     volumes:
       - ./data/datanode1:/hadoop/dfs/data
     env_file:
       - ./hadoop.env
 
-  datanode2:
-    build: ./datanode
-    hostname: datanode2
-    container_name: datanode2
-    depends_on:
-      - "namenode"
-    links:
-      - "namenode"
-    volumes:
-      - ./data/datanode2:/hadoop/dfs/data
-    env_file:
-      - ./hadoop.env
+#  datanode2:
+#    build: ./datanode
+#    hostname: datanode2
+#    container_name: datanode2
+#    depends_on:
+#      - "namenode"
+#    links:
+#      - "namenode"
+#    ports:
+#      - "50076:50075"
+#    volumes:
+#      - ./data/datanode2:/hadoop/dfs/data
+#    env_file:
+#      - ./hadoop.env
 
   datanode3:
     build: ./datanode
@@ -89,7 +95,10 @@ services:
       - "namenode"
     links:
       - "namenode"
+    ports:
+      - "50077:50075"
     volumes:
       - ./data/datanode3:/hadoop/dfs/data
+      - /Users/leopoldli/ruiya/hadoop_client:/home/client
     env_file:
       - ./hadoop.env

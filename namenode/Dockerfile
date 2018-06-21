@@ -9,6 +9,9 @@ VOLUME /hadoop/dfs/name
 
 ADD run.sh /run.sh
 RUN chmod a+x /run.sh
+ADD extra.sh /extra.sh
+RUN chmod a+x /extra.sh
+RUN /extra.sh
 
 EXPOSE 50070
 
