@@ -1,5 +1,4 @@
-FROM bde2020/hadoop-base:1.1.0-hadoop2.7.1-java8
-MAINTAINER Ivan Ermilov <ivan.s.ermilov@gmail.com>
+FROM hadoopbase:v1
 
 HEALTHCHECK CMD curl -f http://localhost:50075/ || exit 1
 
@@ -9,10 +8,6 @@ VOLUME /hadoop/dfs/data
 
 ADD run.sh /run.sh
 RUN chmod a+x /run.sh
-ADD extra.sh /extra.sh
-RUN chmod a+x /extra.sh
-RUN /extra.sh
-RUN apt-get install -y python
 
 EXPOSE 50075
 

@@ -1,5 +1,4 @@
-FROM bde2020/hadoop-base:1.0.0
-MAINTAINER Ivan Ermilov <ivan.s.ermilov@gmail.com>
+FROM hadoopbase:v1
 
 HEALTHCHECK CMD curl -f http://localhost:8188/ || exit 1
 
@@ -9,9 +8,6 @@ VOLUME /hadoop/yarn/timeline
 
 ADD run.sh /run.sh
 RUN chmod a+x /run.sh
-ADD extra.sh /extra.sh
-RUN chmod a+x /extra.sh
-RUN /extra.sh
 
 EXPOSE 8188
 

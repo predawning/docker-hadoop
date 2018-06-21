@@ -1,13 +1,9 @@
-FROM bde2020/hadoop-base:1.1.0-hadoop2.7.1-java8
-MAINTAINER Ivan Ermilov <ivan.s.ermilov@gmail.com>
+FROM hadoopbase:v1
 
 HEALTHCHECK CMD curl -f http://localhost:8088/ || exit 1
 
 ADD run.sh /run.sh
 RUN chmod a+x /run.sh
-ADD extra.sh /extra.sh
-RUN chmod a+x /extra.sh
-RUN /extra.sh
 
 EXPOSE 8088
 
